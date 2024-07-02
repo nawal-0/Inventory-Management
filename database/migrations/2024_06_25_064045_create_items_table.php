@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('category');
             $table->text('description');
             $table->integer('quantity');
             $table->timestamps();

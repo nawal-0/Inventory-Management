@@ -18,24 +18,29 @@
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-4">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-100">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-200">
             <tr>
                 <th scope="col" class="px-6 py-3">Name</th>
                 <th scope="col" class="px-6 py-3">Description</th>
+                <th scope="col" class="px-6 py-3">Category</th>
                 <th scope="col" class="px-6 py-3">Quantity</th>
                 <th scope="col" class="px-6 py-3">Actions</th>
-
             </tr>
         </thead>
         <tbody>
             @forelse($items as $item)
-                <tr class="odd:bg-white even:bg-gray-100 border-b hover:bg-indigo-200">
+                <tr class="odd:bg-slate-50 even:bg-gray-100 border-b hover:bg-indigo-200 border border-gray-200">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $item->name }}
                     </th>
                     <td class="px-6 py-4">{{ $item->description }}</td>
+                    <td class="px-6 py-4">{{ $item->category }}</td>
                     <td class="px-6 py-4">{{ $item->quantity }}</td>
-                    <td class="px-6 py-4">--</td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                        <span class="mx-1">|</span>
+                        <a href="#" class="font-medium text-blue-600 hover:underline">Order</a>
+                    </td>
                 </tr>
             @empty
                 <tr>

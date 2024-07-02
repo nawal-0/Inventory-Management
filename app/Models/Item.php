@@ -16,9 +16,15 @@ class Item extends Model
      */
     protected $fillable = [
         'name',
+        'category',
         'description',
         'quantity',
     ];
+
+    public static function getCategories()
+    {
+        return ['Category1', 'Category2', 'Category3', 'Category4', 'Category5'];
+    }
 
     
 } 

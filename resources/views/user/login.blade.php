@@ -1,7 +1,6 @@
 @extends('layout')
 @section('content')
 
-
 <div class="flex flex-row items-center justify-start h-screen">
     <div class="bg-primary h-full w-1/2 place-content-center" >
         <h1 class="text-center text-wrap text-4xl text-white uppercase">Inventory <br> Management <br> System</h1>
