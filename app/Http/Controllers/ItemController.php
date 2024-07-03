@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 
 class ItemController extends Controller
@@ -25,6 +26,21 @@ class ItemController extends Controller
         // } else {
         //     return view('items', ['items' => $items_list]);
         // }
+    }
+
+    public function new(Request $request)
+    {
+        // dd($request->all());
+       $newItem = $request->validate([
+            'name' => ['required', Rule::unique('items')],
+            'category' => 'required',
+            'description' => 'required',
+            'quantity' => 'required|numeric',
+        ]);
+
+        $item = Item::create($newItem);
+
+        return redirect('/home')->with('message', 'Item created successfully');
     }
 
     

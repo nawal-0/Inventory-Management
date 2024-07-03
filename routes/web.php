@@ -16,5 +16,7 @@ Route::post('/users/logout', [UserController::class, 'logout']);
 
 Route::post('/users/login', [UserController::class, 'login']);
 
+Route::post('/home/add', [ItemController::class, 'new']);
+
 
 

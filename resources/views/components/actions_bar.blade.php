@@ -20,9 +20,7 @@
         <div class="flex justify-end space-x-4 items-end">
             {{--add item--}}
             <div>
-            <button class="bg-primary font-medium text-sm text-white px-4 py-2 rounded-lg hover:bg-primary-dark">
-                Add Item
-            </button>
+            <x-add_modal />
             </div>
 
         </div> 
