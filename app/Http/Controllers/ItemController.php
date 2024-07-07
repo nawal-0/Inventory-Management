@@ -20,18 +20,12 @@ class ItemController extends Controller
 
         $items_list = $query->get();
         return view('items', ['items' => $items_list]);
-        
-        // if (request('search')) {
-        //     return view('items', ['items' => $items_list->where('name', 'like', '%' . request('search') . '%')->get()]);
-        // } else {
-        //     return view('items', ['items' => $items_list]);
-        // }
     }
 
     public function new(Request $request)
     {
         // dd($request->all());
-       $newItem = $request->validate([
+        $newItem = $request->validate([
             'name' => ['required', Rule::unique('items')],
             'category' => 'required',
             'description' => 'required',
@@ -39,8 +33,31 @@ class ItemController extends Controller
         ]);
 
         $item = Item::create($newItem);
+        // return redirect('/home')->with('message', 'Item created successfully');
+        return back()->with('message', 'Item created successfully');
+    }
 
-        return redirect('/home')->with('message', 'Item created successfully');
+    public function edit($id, Request $request)
+    {
+        $item = Item::find($id);
+
+        $request->validate([
+            'name' => ['required', Rule::unique('items')->ignore($item->id)],
+            'category' => 'required',
+            'description' => 'required',
+            'quantity' => 'required|numeric',
+        ]);
+
+        $item->name = $request->input('name');
+        $item->category = $request->input('category');
+        $item->description = $request->input('description');
+        $item->quantity = $request->input('quantity');
+
+        $item->save();
+
+
+
+        
     }
 
     
