@@ -24,5 +24,9 @@ Route::get('/home/edit/{id}', [ItemController::class, 'editview']);
 
 Route::post('/home/edit/{id}', [ItemController::class, 'edit']);
 
+Route::get('home/order/{id}', [ItemController::class, 'order']);
+
+Route::get('home/order', [ItemController::class, 'order']);
+
 
 

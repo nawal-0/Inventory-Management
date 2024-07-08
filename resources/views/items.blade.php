@@ -39,7 +39,7 @@
                     <td class="px-6 py-4">
                         <a href="/home/edit/{{ $item->id }}" class="font-medium text-blue-600 hover:underline">Edit</a>
                         <span class="mx-1">|</span>
-                        <a href="#" class="font-medium text-blue-600 hover:underline">Order</a>
+                        <a href="/home/order/{{ $item->id }}" class="font-medium text-blue-600 hover:underline">Order</a>
                     </td>
                 </tr>
             @empty

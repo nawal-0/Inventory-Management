@@ -16,9 +16,9 @@ class ItemController extends Controller
 
         if ($request->has('search')) {
             // $query->where('name', 'like', '%' . $request->input('search') . '%');
-            $items_list = Item::where('name', 'like', '%' . $request->input('search') . '%')->paginate(10);
+            $items_list = Item::where('name', 'like', '%' . $request->input('search') . '%')->sortable()->paginate(10);
         } else {
-            $items_list = Item::paginate(10);
+            $items_list = Item::sortable()->paginate(10);
         }
 
         //$items_list = Item::$query->get()->paginate(10);
@@ -66,6 +66,12 @@ class ItemController extends Controller
 
         $item->save();
         return back()->with('message', 'Item updated successfully');
+    }
+
+    public function order($id, Request $request)
+    {
+        $item = Item::find($id);
+        return view('order', ['item' => $item]);
     }
 
     
