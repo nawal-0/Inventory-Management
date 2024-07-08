@@ -37,7 +37,7 @@
                     <td class="px-6 py-4">{{ $item->category }}</td>
                     <td class="px-6 py-4">{{ $item->quantity }}</td>
                     <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                        <a href="/home/edit/{{ $item->id }}" class="font-medium text-blue-600 hover:underline">Edit</a>
                         <span class="mx-1">|</span>
                         <a href="#" class="font-medium text-blue-600 hover:underline">Order</a>
                     </td>
@@ -47,12 +47,39 @@
                     <td class="px-6 py-4 text-center" colspan="3">No items found.</td>
                 </tr>
             @endforelse
+            
         </tbody>
     </table>
 
 </div>
 
+<x-item_modal modalId="edit-modal" buttonId="closed" formAction="/home/edit/" :id="session('it')"/>
 
+<script>
+    // create modal
+    const $target = document.getElementById('edit-modal');
+    const modals = new Modal($target);
+
+    // document.getElementById('btn').addEventListener('click', () => {
+    //     modals.toggle();
+    // });
+    @if (session('it')) {
+        modals.show();
+    }
+    @endif
+
+    document.getElementById('closed').addEventListener('click', () => {
+        modals.hide();
+    });
+
+    // show if validation errors
+    const err = @json($errors->all());
+    if (errors.length > 0) {
+        console.log(errors);
+        modals.show();
+        
+    }
+</script>
 
 @endsection
 

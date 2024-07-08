@@ -37,8 +37,16 @@ class ItemController extends Controller
         return back()->with('message', 'Item created successfully');
     }
 
+    public function editview($id, Request $request)
+    {
+        //dd($id);
+        $item = Item::find($id);
+        return back()->with('it', $item);
+    }
+
     public function edit($id, Request $request)
     {
+        //dd($id);
         $item = Item::find($id);
 
         $request->validate([
@@ -54,10 +62,7 @@ class ItemController extends Controller
         $item->quantity = $request->input('quantity');
 
         $item->save();
-
-
-
-        
+        return back()->with('message', 'Item updated successfully');
     }
 
     

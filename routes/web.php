@@ -20,7 +20,9 @@ Route::post('/users/login', [UserController::class, 'login']);
 
 Route::post('/home/add', [ItemController::class, 'new']);
 
-Route::get('/home/edit/{id}', [ItemController::class, 'edit']);
+Route::get('/home/edit/{id}', [ItemController::class, 'editview']);
+
+Route::post('/home/edit/{id}', [ItemController::class, 'edit']);
 
 
 
