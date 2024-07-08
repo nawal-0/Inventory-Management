@@ -16,6 +16,15 @@
    
 <x-actions_bar />
 
+@if (session('message'))
+<div x-data="{show: true}" x-init="setTimeout(() => show = false, 3000)" x-show="show"
+    class="fixed top-5 left-1/2 transform -translate-x-1/2 rounded-lg bg-primary-dark text-white px-40 py-3">
+    <p>
+      {{session('message')}}
+    </p>
+  </div>
+@endif
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-4">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200">

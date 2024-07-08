@@ -4,6 +4,9 @@
 <x-dashboard />
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-4">
+    <h3 class="text-lg font-semibold text-gray-900 p-4">
+        Order Item
+    </h3>
     <form method="POST" action="/home/order/{{ $item->id }}">
         @csrf
         <div class="grid gap-4 mb-4 grid-cols-2">
@@ -30,14 +33,13 @@
         <div class="flex flex-col p-4 col-span-1">
             <label for="quantity" class="text-sm text-gray-500">Quantity to Order</label>
             <input type="number" name="quantity" id="quantity" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" 
-            required placeholder="Enter quantity here...">
+            required placeholder="Enter quantity...">
         </div>
     </div>
         <div class="flex justify-end p-4 justify-center">
             <button type="submit" class="bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded">Order</button>
         </div>
-
-
+    </form>
 </div>
 
 
