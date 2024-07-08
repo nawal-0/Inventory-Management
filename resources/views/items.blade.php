@@ -52,6 +52,9 @@
     </table>
 
 </div>
+<div class="mt-4 p-4">
+    {{$items->links()}}
+</div>
 
 <x-item_modal modalId="edit-modal" buttonId="closed" formAction="/home/edit/" :id="session('it')"/>
 

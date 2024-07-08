@@ -12,13 +12,16 @@ class ItemController extends Controller
     public function index(Request $request)
     {   
         $query = Item::query();
-        $items_list = Item::all();
+        $items_list;
 
         if ($request->has('search')) {
-            $query->where('name', 'like', '%' . $request->input('search') . '%');
+            // $query->where('name', 'like', '%' . $request->input('search') . '%');
+            $items_list = Item::where('name', 'like', '%' . $request->input('search') . '%')->paginate(10);
+        } else {
+            $items_list = Item::paginate(10);
         }
 
-        $items_list = $query->get();
+        //$items_list = Item::$query->get()->paginate(10);
         return view('items', ['items' => $items_list]);
     }
 

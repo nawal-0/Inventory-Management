@@ -70,25 +70,3 @@
         </div>
     </div>
 </div> 
-
-{{-- <script>
-    // create modal
-    const $targetEl = document.getElementById('modal');
-    const modal = new Modal($targetEl);
-
-    document.getElementById('add_item_btn').addEventListener('click', () => {
-        modal.toggle();
-    });
-
-    document.getElementById('close_btn').addEventListener('click', () => {
-        modal.hide();
-    });
-
-    // show if validation errors
-    const errors = @json($errors->all());
-    if (errors.length > 0) {
-        console.log(errors);
-        modal.show();
-        
-    }
-</script> --}}
