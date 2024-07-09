@@ -83,14 +83,7 @@
     document.getElementById('closed').addEventListener('click', () => {
         modals.hide();
     });
-
-    // show if validation errors
-    const err = @json($errors->all());
-    if (errors.length > 0) {
-        console.log(errors);
-        modals.show();
-        
-    }
+    
 </script>
 
 @endsection

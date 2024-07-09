@@ -44,9 +44,9 @@
     });
 
     // show if validation errors
-    const errors = @json($errors->all());
+    const errors = @json($errors->new->all());
+    console.log(errors);
     if (errors.length > 0) {
-        console.log(errors);
         modal.show();
         
     }

@@ -24,8 +24,8 @@
                     <div class="col-span-2">
                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
                         <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" 
-                        placeholder="Type item name" required="" value="{{ $id ? $id->name : ''}}">
-                        @error('name')
+                        placeholder="Type item name" required="" value="{{ $id ? $id->name : old('name')}}">
+                        @error('name', $id ? 'edit' : 'new')
                             <label class="text-red-500 text-xs mt-1">{{ $message }}</label>
                         @enderror
                     </div>
@@ -33,8 +33,8 @@
                     <div class="col-span-2">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Item Description</label>
                         <textarea name="description" id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 
-                        placeholder="Write description here" required="">{{ $id ? $id->description : ''}}</textarea>                    
-                        @error('description')
+                        placeholder="Write description here" required="">{{ $id ? $id->description : old('description')}}</textarea>                    
+                        @error('description', $id ? 'edit' : 'new')
                             <label class="text-red-500 text-xs mt-1">{{ $message }}</label>
                         @enderror
                     </div>
@@ -47,7 +47,7 @@
                             <option value="{{ $category }}" {{ ($id && $id->category == $category) ? 'selected' : ""}}>{{ $category }}</option>
                             @endforeach
                         </select>
-                        @error('category')
+                        @error('category', $id ? 'edit' : 'new')
                             <label class="text-red-500 text-xs mt-1">{{ $message }}</label>
                         @enderror
                     </div>
@@ -55,8 +55,8 @@
                     <div class="col-span-2 sm:col-span-1">
                         <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900">Quantity</label>
                         <input type="number" name="quantity" id="quantity" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" 
-                        placeholder="0" required="" value={{ $id ? $id->quantity : ''}}>
-                        @error('quantity')
+                        placeholder="0" required="" value={{ $id ? $id->quantity : old('quantity')}}>
+                        @error('quantity', $id ? 'edit' : 'new')
                             <label class="text-red-500 text-xs mt-1">{{ $message }}</label>
                         @enderror
                     </div>

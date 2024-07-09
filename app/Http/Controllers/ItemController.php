@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -11,7 +12,7 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {   
-        $query = Item::query();
+        //$query = Item::query();
         $items_list;
 
         if ($request->has('search')) {
@@ -21,14 +22,14 @@ class ItemController extends Controller
             $items_list = Item::sortable()->paginate(10);
         }
 
-        //$items_list = Item::$query->get()->paginate(10);
+        //$items_list = Item::$query->get()
         return view('items', ['items' => $items_list]);
     }
 
     public function new(Request $request)
     {
         // dd($request->all());
-        $newItem = $request->validate([
+        $newItem = $request->validateWithBag('new', [
             'name' => ['required', Rule::unique('items')],
             'category' => 'required',
             'description' => 'required',
@@ -51,13 +52,17 @@ class ItemController extends Controller
     {
         //dd($id);
         $item = Item::find($id);
-
-        $request->validate([
+        
+        $validator = Validator::make($request->all(), [
             'name' => ['required', Rule::unique('items')->ignore($item->id)],
             'category' => 'required',
             'description' => 'required',
             'quantity' => 'required|numeric',
         ]);
+
+        if ($validator->fails()) {
+            return back()->withInput()->with('it', $item)->withErrors($validator, 'edit');
+        }
 
         $item->name = $request->input('name');
         $item->category = $request->input('category');
@@ -73,6 +78,8 @@ class ItemController extends Controller
         $item = Item::find($id);
         return view('order', ['item' => $item]);
     }
+
+    
 
     
 

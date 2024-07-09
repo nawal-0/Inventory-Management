@@ -3,7 +3,7 @@
 
 <x-dashboard />
 
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg m-4">
+<div class="relative overflow-x-auto border border-slate-200 shadow-inner sm:rounded-lg m-4">
     <h3 class="text-lg font-semibold text-gray-900 p-4">
         Order Item
     </h3>
@@ -12,22 +12,22 @@
         <div class="grid gap-4 mb-4 grid-cols-2">
         <div class="flex flex-col p-4 col-span-1">
             <label for="name" class="text-sm text-gray-500">Name</label>
-            <input type="text" name="name" id="name" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->name }}" readonly>
+            <input type="text" name="name" id="name" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->name }}" disabled readonly>
         </div>
 
         <div class="flex flex-col p-4 col-span-2">
             <label for="description" class="text-sm text-gray-500">Description</label>
-            <input type="text" name="description" id="description" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->description }}" readonly>
+            <input type="text" name="description" id="description" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->description }}" disabled readonly>
         </div>
 
         <div class="flex flex-col p-4 col-span-1">
             <label for="category" class="text-sm text-gray-500">Category</label>
-            <input type="text" name="category" id="category" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->category }}" readonly>
+            <input type="text" name="category" id="category" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->category }}" disabled readonly>
         </div>
 
         <div class="flex flex-col p-4 col-span-1">
             <label for="quantity" class="text-sm text-gray-500">Current Quantity</label>
-            <input type="number" name="quantity" id="quantity" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->quantity }}" readonly>
+            <input type="number" name="quantity" id="quantity" class="bg-gray-100 border border-gray-300 p-2 rounded mt-2" value="{{ $item->quantity }}" disabled readonly>
         </div>
 
         <div class="flex flex-col p-4 col-span-1">
