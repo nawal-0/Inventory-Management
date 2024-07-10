@@ -29,6 +29,7 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200">
             <tr>
+                <th scope="col" class="px-6 py-3">Image</th>
                 <th scope="col" class="px-6 py-3">Name</th>
                 <th scope="col" class="px-6 py-3">Description</th>
                 <th scope="col" class="px-6 py-3">Category</th>
@@ -39,6 +40,11 @@
         <tbody>
             @forelse($items as $item)
                 <tr class="odd:bg-slate-50 even:bg-gray-100 border-b hover:bg-indigo-200 border border-gray-200">
+                    <td class="px-6 py-4">
+                        <img class="w-14 md:block"
+                            src={{asset('/storage/' . $item->image )}} alt="" />
+                            
+                    </td>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                         {{ $item->name }}
                     </th>
@@ -53,7 +59,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td class="px-6 py-4 text-center" colspan="3">No items found.</td>
+                    <td class="px-6 py-4 text-center" colspan="6">No items found.</td>
                 </tr>
             @endforelse
             

@@ -23,6 +23,7 @@ class ItemFactory extends Factory
         return [
             'name' => $this->faker->unique()->word,
             'category' => $this->faker->randomElement(Item::getCategories()),
+            'image' => 'items/narwhal.jpeg',
             'description' => $this->faker->sentence(),
             'quantity' => $this->faker->numberBetween(1, 100),
 

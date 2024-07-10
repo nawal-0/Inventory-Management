@@ -18,7 +18,7 @@
                 </button>
             </div>
             <!-- body -->
-            <form class="p-4 md:p-5" method="POST" action= {{ $id ? $formAction . $id->id : $formAction}}>
+            <form class="p-4 md:p-5" method="POST" action= {{ $id ? $formAction . $id->id : $formAction}} enctype="multipart/form-data">
                 @csrf
                 <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
@@ -30,6 +30,14 @@
                         @enderror
                     </div>
 
+                    <div class="col-span-2">
+                        <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Upload Item Image</label>
+                        <input  type="file" name="image" id="image" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300">
+                        @error('image', $id ? 'edit' : 'new')
+                            <label class="text-red-500 text-xs mt-1">{{ $message }}</label>
+                        @enderror
+                    </div>
+                    
                     <div class="col-span-2">
                         <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Item Description</label>
                         <textarea name="description" id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" 

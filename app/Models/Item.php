@@ -18,6 +18,7 @@ class Item extends Model
     protected $fillable = [
         'name',
         'category',
+        'image',
         'description',
         'quantity',
     ];
@@ -36,6 +37,14 @@ class Item extends Model
     public static function getCategories()
     {
         return ['Category1', 'Category2', 'Category3', 'Category4', 'Category5'];
+    }
+
+    public function scopeFilter($query, array $filters)
+    {
+        if($filters['search'] ?? false) {
+            $query->where('name', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%');
+        };
     }
 
     
