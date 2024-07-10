@@ -13,7 +13,7 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {   
-        return view('items', ['items' => Item::latest()->filter(request(['search']))->paginate(10)]);
+        return view('items', ['items' => Item::latest()->filter(request(['search']))->autosort()->paginate(10)]);
     }
 
     public function new(Request $request)
@@ -40,6 +40,7 @@ class ItemController extends Controller
     {
         //dd($id);
         $item = Item::find($id);
+        dd(gettype($item->quantity));
         return back()->with('it', $item);
     }
 

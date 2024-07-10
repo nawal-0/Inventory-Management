@@ -27,13 +27,13 @@
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-4">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-200 with-larasort">
             <tr>
                 <th scope="col" class="px-6 py-3">Image</th>
-                <th scope="col" class="px-6 py-3">Name</th>
+                <th scope="col" class="px-6 py-3">@sortableLink('name','Name')</th>
                 <th scope="col" class="px-6 py-3">Description</th>
-                <th scope="col" class="px-6 py-3">Category</th>
-                <th scope="col" class="px-6 py-3">Quantity</th>
+                <th scope="col" class="px-6 py-3">@sortableLink('category','Category')</th>
+                <th scope="col" class="px-6 py-3">@sortableLink('quantity','Quantity')</th>
                 <th scope="col" class="px-6 py-3">Actions</th>
             </tr>
         </thead>

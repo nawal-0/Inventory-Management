@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use SDamian\Larasort\AutoSortable;
 use Kyslik\ColumnSortable\Sortable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Item extends Model
 {
-    use HasFactory, Sortable;
+    use HasFactory, AutoSortable;
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +29,7 @@ class Item extends Model
      *
      * @var array<int, string>
      */
-    public $sortable = [
+    public $sortables = [
         'name',
         'category',
         'quantity',
