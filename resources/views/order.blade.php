@@ -3,7 +3,8 @@
 
 <x-dashboard />
 
-<div class="relative overflow-x-auto border border-slate-200 shadow-inner sm:rounded-lg m-4">
+<div class="flex place-content-center">
+<div class="relative overflow-x-auto border border-slate-200 shadow-lg w-3/4 sm:rounded-lg m-4">
     <h3 class="text-lg font-semibold text-gray-900 p-4">
         Order Item
     </h3>
@@ -41,7 +42,7 @@
         </div>
     </form>
 </div>
-
+</div>
 
 
 
