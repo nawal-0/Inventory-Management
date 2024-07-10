@@ -71,7 +71,7 @@
     {{$items->links()}}
 </div>
 
-<x-item_modal modalId="edit-modal" buttonId="closed" formAction="/home/edit/" :id="session('it')"/>
+<x-item_modal modalId="edit-modal" buttonId="closed" formAction="/home/edit/" fileId="image" :id="session('it')"/>
 
 <script>
     // create modal

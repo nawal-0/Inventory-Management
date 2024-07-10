@@ -24,7 +24,7 @@
             <button id="add_item_btn" class="bg-primary font-medium text-sm text-white px-4 py-2 rounded-lg hover:bg-primary-dark">
                 Add Item
             </button>
-            <x-item_modal modalId="modal" buttonId="close_btn" formAction="/home/add"/>
+            <x-item_modal modalId="modal" buttonId="close_btn" formAction="/home/add" fileId="image1"/>
 
         </div> 
     </div>   

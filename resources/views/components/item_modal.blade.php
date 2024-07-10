@@ -1,4 +1,4 @@
-@props(['modalId', 'buttonId', 'formAction', 'id' => null])
+@props(['modalId', 'buttonId', 'formAction', 'fileId', 'id' => null])
 
 <!-- Main modal -->
 <div id={{ $modalId }} tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -32,7 +32,13 @@
 
                     <div class="col-span-2">
                         <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Upload Item Image</label>
-                        <input  type="file" name="image" id="image" class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300">
+                        <input  type="file" name="image" id={{ $fileId }} class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300">
+                        @if ($id)
+                            <img id="preview1" class="block w-1/4 mt-5 border border-gray-300" src="{{asset('storage/' . $id->image)}}" alt="Preview" />
+                        @else
+                            <img id="preview2" src="#" alt="Preview" class="hidden w-1/4 mt-5 border border-gray-300">
+                        @endif
+                       
                         @error('image', $id ? 'edit' : 'new')
                             <label class="text-red-500 text-xs mt-1">{{ $message }}</label>
                         @enderror
@@ -78,3 +84,37 @@
         </div>
     </div>
 </div> 
+
+<script>
+    document.getElementById('image').addEventListener('change', function() {
+        previewImage1(this);
+    });
+
+    document.getElementById('image1').addEventListener('change', function() {
+        previewImage2(this);
+    });
+
+    function previewImage1(input, item) {
+        var preview = document.getElementById('preview1');
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function previewImage2(input) {
+        var preview = document.getElementById('preview2');
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

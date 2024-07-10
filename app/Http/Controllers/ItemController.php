@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ItemController extends Controller
 {
@@ -68,9 +69,9 @@ class ItemController extends Controller
         $newImagePath = $request->file('image')->store('items', 'public');
 
         // delete the old image
-        if ($currentImage && Storage::disk('public')->exists($currentImage)) {
-            Storage::disk('public')->delete($currentImage);
-        }
+        // if ($currentImage && Storage::disk('public')->exists($currentImage)) {
+        //     Storage::disk('public')->delete($currentImage);
+        // }
 
         $item->image = $newImagePath;
         $item->save();
