@@ -37,4 +37,18 @@ class OrderController extends Controller
         return view('orders.index', ['orders' => $orders]);
     }
 
+    // cancel an order
+    public function cancel($id) {
+        $order = Order::find($id);
+        $order['status'] = 'cancelled';
+        $order->save();
+        return back()->with('message', 'Order cancelled successfully');
+    }
+
+    public function delete($id) {
+        $order = Order::find($id);
+        $order->delete();
+        return back()->with('message', 'Order deleted successfully');
+    }
+
 }

@@ -22,6 +22,8 @@ Route::post('/home/edit/{id}', [ItemController::class, 'edit']);
 Route::get('home/order/{id}', [OrderController::class, 'create']);
 Route::post('home/order/{id}', [OrderController::class, 'store']);
 Route::get('home/orders', [OrderController::class, 'index']);
+Route::get('home/orders/cancel/{id}', [OrderController::class, 'cancel']);
+Route::get('home/orders/delete/{id}', [OrderController::class, 'delete']);
 
 
 

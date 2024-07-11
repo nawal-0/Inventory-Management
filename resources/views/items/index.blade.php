@@ -57,7 +57,8 @@
 
 </div>
 <div class="mt-4 p-4">
-    {{$items->links()}}
+    {{-- {{$items->links()}} --}}
+    {!! $items->appends(Request::except('page'))->render() !!}
 </div>
 
 <x-item_modal modalId="edit-modal" buttonId="closed" formAction="/home/edit/" fileId="image" :id="session('it')"/>
@@ -67,9 +68,6 @@
     const $target = document.getElementById('edit-modal');
     const modals = new Modal($target);
 
-    // document.getElementById('btn').addEventListener('click', () => {
-    //     modals.toggle();
-    // });
     @if (session('it')) {
         modals.show();
     }
