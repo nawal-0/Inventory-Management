@@ -21,4 +21,12 @@ class Order extends Model
         'status',
         'order_date',
     ];
+
+    /**
+     * Get the item that owns the order.
+     */
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
 }

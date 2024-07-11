@@ -30,9 +30,11 @@ class OrderController extends Controller
         return redirect('/home')->with('message', 'Order placed successfully');
     }
 
+    // show a user's orders
     public function index(Request $request) {
         //dd(auth()->user());
-        return view('orders.index', ['orders' => auth()->user()->orders()->latest()->paginate(10)]);
+        $orders = auth()->user()->orders()->with('item')->latest()->paginate(10);
+        return view('orders.index', ['orders' => $orders]);
     }
 
 }

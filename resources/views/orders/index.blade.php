@@ -4,7 +4,7 @@
 <x-navbar />
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg mx-4 mt-4">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+    <table class="w-full text-sm text-center text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200">
             <tr>
                 <th scope="col" class="px-6 py-3">Image</th>
@@ -20,11 +20,11 @@
                 <tr class="odd:bg-slate-50 even:bg-gray-100 border-b hover:bg-indigo-200 border border-gray-200">
                     <td class="px-6 py-4">
                         <img class="w-14 md:block"
-                            src={{asset('/storage/' . $order->image )}} alt="" />
+                            src={{asset('/storage/' . $order->item->image )}} alt="" />
                             
                     </td>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        {{ $order->name }}
+                        {{ $order->item->name }}
                     </th>
                     <td class="px-6 py-4">{{ $order->quantity }}</td>
                     <td class="px-6 py-4">{{ $order->order_date }}</td>
@@ -42,6 +42,10 @@
         </tbody>
     </table>
 
+</div>
+
+<div class="mt-4 p-4">
+    {{$orders->links()}}
 </div>
 
 @endsection

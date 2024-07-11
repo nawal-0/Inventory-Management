@@ -29,7 +29,7 @@ class ItemController extends Controller
 
         $filepath =  $request->file('image')->store('items', 'public');
         //dd($filepath);
-        $newItem['image'] = $filename;
+        $newItem['image'] = $filepath;
 
         $item = Item::create($newItem);
         // return redirect('/home')->with('message', 'Item created successfully');
