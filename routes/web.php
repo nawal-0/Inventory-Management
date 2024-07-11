@@ -21,6 +21,7 @@ Route::post('/home/edit/{id}', [ItemController::class, 'edit']);
 
 Route::get('home/order/{id}', [OrderController::class, 'create']);
 Route::post('home/order/{id}', [OrderController::class, 'store']);
+Route::get('home/orders', [OrderController::class, 'index']);
 
 
 
