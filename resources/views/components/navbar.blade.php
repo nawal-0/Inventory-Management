@@ -6,12 +6,12 @@
             <div class="justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
                 <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                     <li>
-                        <a href="/home" class="block py-2 px-3 hover:bg-primary-dark hover:rounded
-                        {{ request()->is('home') ? 'text-white border-b-2 border-white' : 'text-gray-100' }}">Home</a>
+                        <a href="/home" class="block py-2 px-3
+                        {{ request()->is('home') ? 'text-white border-b-2 border-white' : 'text-gray-100 hover:text-white hover:border-white hover:border-b-2' }}">Home</a>
                     </li>
                     <li>
-                        <a href="/home/orders" class="block py-2 px-3 hover:bg-primary-dark hover:rounded
-                        {{ request()->is('home/orders') ? 'text-white border-b-2 border-white' : 'text-gray-100' }}">My Orders</a>
+                        <a href="/home/orders" class="block py-2 px-3 
+                        {{ request()->is('home/orders') ? 'text-white border-b-2 border-white' : 'text-gray-100 hover:text-white hover:border-white hover:border-b-2' }}">My Orders</a>
                     </li>
                 </ul>
             </div>
@@ -20,7 +20,7 @@
                     @csrf
                     <button 
                         type="submit" 
-                        class="block text-sm font-medium rounded-lg py-2 pr-4 pl-3 text-white hover:bg-indigo-100 hover:text-black"
+                        class="block text-sm font-medium rounded-lg py-2 pr-4 pl-3 text-white hover:bg-primary-dark"
                     >
                     Logout
                     </button>

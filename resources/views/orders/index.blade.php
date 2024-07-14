@@ -30,11 +30,7 @@
                     <td class="px-6 py-4">{{ $order->order_date }}</td>
                     <td class="px-6 py-4">{{ $order->status }}</td>
                     <td class="px-6 py-4">
-                        @if ($order->status == 'pending')
-                            <a href="/home/orders/cancel/{{ $order->id }}" class="font-medium text-red-600 hover:underline">Cancel</a>
-                        @else
-                            <a href="/home/orders/delete/{{ $order->id }}" class="font-medium text-red-600 hover:underline">Delete</a>
-                        @endif
+                        <a href="/home/orders/delete/{{ $order->id }}" class="font-medium text-red-600 hover:underline">Cancel</a>
                     </td>
                 </tr>
             @empty

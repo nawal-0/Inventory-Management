@@ -34,7 +34,7 @@ class UserController extends Controller
         $user = User::create($newUser);
         auth()->login($user);
 
-        return redirect('/home')->with('message', 'User created successfully');
+        return redirect('/home')->with('message', 'Logged in successfully');
     }
 
     // logs out the user
@@ -43,7 +43,7 @@ class UserController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/')->with('message', 'User logged out successfully');
+        return redirect('/')->with('message', 'Logged out successfully');
     }
 
     // attempts to logs in the user
@@ -56,7 +56,7 @@ class UserController extends Controller
 
         if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/home')->with('message', 'User logged in successfully');
+            return redirect('/home')->with('message', 'Logged in successfully');
         }
 
         return back()->withErrors([
