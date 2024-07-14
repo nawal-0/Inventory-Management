@@ -29,4 +29,13 @@ class Order extends Model
     {
         return $this->belongsTo(Item::class);
     }
+
+    /**
+     * Get the user that owns the order.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }

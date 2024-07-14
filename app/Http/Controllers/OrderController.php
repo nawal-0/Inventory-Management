@@ -51,4 +51,9 @@ class OrderController extends Controller
         return back()->with('message', 'Order deleted successfully');
     }
 
+    public function approveview() {
+        $orders = Order::where('status', 'pending')->with('item')->with('user')->latest()->paginate(10);
+        return view('orders.approve', ['orders' => $orders]);
+    }
+
 }

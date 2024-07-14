@@ -23,6 +23,11 @@ Route::get('home/order/{id}', [OrderController::class, 'create']);
 Route::post('home/order/{id}', [OrderController::class, 'store']);
 Route::get('home/orders', [OrderController::class, 'index']);
 Route::get('home/orders/delete/{id}', [OrderController::class, 'delete']);
+Route::get('home/orders/approve', [OrderController::class, 'approveview']);
+Route::get('home/orders/approve/{id}', [OrderController::class, 'approve']);
+Route::get('home/orders/reject/{id}', [OrderController::class, 'reject']);
+
+
 
 
 
