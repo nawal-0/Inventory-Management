@@ -33,7 +33,7 @@ class ItemController extends Controller
 
         $item = Item::create($newItem);
         // return redirect('/home')->with('message', 'Item created successfully');
-        return back()->with('message', 'Item added successfully');
+        return redirect('/home')->with('message', 'Item added successfully');
     }
 
     public function editview($id, Request $request)

@@ -15,8 +15,7 @@ Route::post('/users/login', [UserController::class, 'login']);
 Route::middleware('auth')->group(function () {
     Route::post('/users/logout', [UserController::class, 'logout']);
     
-    Route::get('/home', [ItemController::class, 'index']);
-    Route::get('/home/add', [ItemController::class, 'newview']);
+    Route::get('/home', [ItemController::class, 'index'])->name('home');
     Route::post('/home/add', [ItemController::class, 'new']);
 
     Route::get('/home/edit/{id}', [ItemController::class, 'editview']);
