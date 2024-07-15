@@ -7,6 +7,7 @@
     <table class="w-full text-sm text-center text-gray-500">
         <thead class="text-xs text-gray-700 uppercase bg-gray-200">
             <tr>
+                <th scope="col" class="px-6 py-3">Request No.</th>
                 <th scope="col" class="px-6 py-3">Image</th>
                 <th scope="col" class="px-6 py-3">Name</th>
                 <th scope="col" class="px-6 py-3">Quantity Ordered</th>
@@ -18,7 +19,8 @@
         <tbody>
             @forelse($orders as $order)
                 <tr class="odd:bg-slate-50 even:bg-gray-100 border-b hover:bg-indigo-200 border border-gray-200">
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4">{{ $order->id }}</td>
+                    <td class="px-6 py-4 flex justify-center">
                         <img class="w-14 md:block"
                             src={{asset('/storage/' . $order->item->image )}} alt="" />
                             
@@ -35,7 +37,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td class="px-6 py-4 text-center" colspan="6">No orders found.</td>
+                    <td class="px-6 py-4 text-center" colspan="7">No orders found.</td>
                 </tr>
             @endforelse
             

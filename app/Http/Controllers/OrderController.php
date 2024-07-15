@@ -56,4 +56,18 @@ class OrderController extends Controller
         return view('orders.approve', ['orders' => $orders]);
     }
 
+    public function approve($id) {
+        $order = Order::find($id);
+        $order['status'] = 'approved';
+        $order->save();
+        return back()->with('message', 'Order approved');
+    }
+
+    public function reject($id) {
+        $order = Order::find($id);
+        $order['status'] = 'rejected';
+        $order->save();
+        return back()->with('message', 'Order rejected');
+    }
+
 }
