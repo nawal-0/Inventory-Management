@@ -75,7 +75,7 @@ class ItemController extends Controller
 
         $item->image = $newImagePath;
         $item->save();
-        return back()->with('message', 'Item updated successfully');
+        return redirect('/home')->with('message', 'Item updated successfully');
     }
 
 
