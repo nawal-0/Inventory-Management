@@ -13,10 +13,12 @@
                         <a href="/home/orders" class="block py-2 px-3 
                         {{ request()->is('home/orders') ? 'text-white border-b-2 border-white' : 'text-gray-100 hover:text-white hover:border-white hover:border-b-2' }}">My Orders</a>
                     </li>
+                    @can('approve-item')
                     <li>
                         <a href="/home/orders/approve" class="block py-2 px-3 
                         {{ request()->is('home/orders/approve') ? 'text-white border-b-2 border-white' : 'text-gray-100 hover:text-white hover:border-white hover:border-b-2' }}">Approve</a>
                     </li>
+                    @endcan
                 </ul>
             </div>
             <div class="flex items-center lg:order-2">

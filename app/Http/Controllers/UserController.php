@@ -32,6 +32,7 @@ class UserController extends Controller
 
         $newUser['password'] = Hash::make($newUser['password']);
         $user = User::create($newUser);
+        $user->assignRole('User');
         auth()->login($user);
 
         return redirect('/home')->with('message', 'Logged in successfully');
