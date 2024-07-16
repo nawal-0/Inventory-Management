@@ -32,14 +32,14 @@
                     <td class="px-6 py-4">{{ $order->order_date }}</td>
                     <td class="px-6 py-4 flex mt-5 justify-center">
                         <a href="/home/orders/approve/{{ $order->id }}">
-                        <svg class="w-6 h-6 stroke-current hover:stroke-blue-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/>
+                        <svg class="w-6 h-6 stroke-current hover:stroke-sky-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 11.917 9.724 16.5 19 7.5"/>
                         </svg>
                         </a>
 
                         <a href="/home/orders/reject/{{ $order->id }}">
                             <svg class="w-6 h-6 stroke-current hover:stroke-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18 17.94 6M18 18 6.06 6"/>
                             </svg>
                         </a>
                     </td>

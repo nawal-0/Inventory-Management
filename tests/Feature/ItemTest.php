@@ -12,6 +12,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ItemTest extends TestCase
 {
+        use RefreshDatabase;
+
+        protected $seed = true;
+        protected $seeder = 'RoleAndPermissionSeeder';
+
+
     public function test_user_can_add_items() {
         $user = User::factory()->create();
         $item = Item::factory()->make(['image' => UploadedFile::fake()->image('item.jpg')]);
@@ -63,5 +69,25 @@ class ItemTest extends TestCase
         $this->assertDatabaseMissing('items', $item->toArray());
     }
     
+    public function test_view_items() {
+        $user = User::factory()->create();
+        $items = Item::factory(2)->create();
+        
+        $response = $this->actingAs($user)->get('/home');
+        $response->assertViewIs('items.index');
+        $response->assertSee($items[0]->name);
+        $response->assertSee($items[1]->name);
+    }
 
+    public function test_search_items() {
+        $user = User::factory()->create();
+        $items = Item::factory(2)->create();
+        $item = Item::factory()->create(['name' => 'xyz'.$items[0]->name]);
+
+        $response = $this->actingAs($user)->get('/home?search='.$items[0]->name);
+        $response->assertViewIs('items.index');
+        $response->assertSee($items[0]->name);
+        $response->assertSee($item->name);
+        $response->assertDontSee($items[1]->name);
+    }
 }

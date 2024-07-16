@@ -10,6 +10,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class OrderTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected $seed = true;
+    protected $seeder = 'RoleAndPermissionSeeder';
+
     public function test_user_can_request_item() {
         $user = User::factory()->create();
         $item = Item::factory()->create();
@@ -31,7 +36,8 @@ class OrderTest extends TestCase
     public function test_user_cannot_approve_order() {
         $user = User::factory()->create();
         $user->assignRole('User');
-        $order = $user->orders()->create(['item_id' => 1, 'quantity' => 15, 'status' => 'pending', 'order_date' => now()]);
+        $item = Item::factory()->create();
+        $order = $user->orders()->create(['item_id' => $item->id, 'quantity' => 15, 'status' => 'pending', 'order_date' => now()]);
 
         $response = $this->actingAs($user)->get("/home/orders/approve/{$order->id}");
         $response->assertStatus(403);
@@ -40,9 +46,12 @@ class OrderTest extends TestCase
     public function test_admin_can_approve_order() {
         $user = User::factory()->create();
         $user->assignRole('Admin');
-        $order = User::factory()->create()->orders()->create(['item_id' => 1, 'quantity' => 15, 'status' => 'pending', 'order_date' => now()]);
+        $item = Item::factory()->create();
+        $order = $user->orders()->create(['item_id' => $item->id, 'quantity' => 15, 'status' => 'pending', 'order_date' => now()]);
 
         $response = $this->actingAs($user)->get("/home/orders/approve/{$order->id}");
         $this->assertDatabaseHas('orders', ['id' => $order->id, 'status' => 'approved']);
     }
+
+
 }

@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth', 'can:approve-item')->group(function () {
     Route::get('home/orders/approve', [OrderController::class, 'approveview']);
     Route::get('home/orders/approve/{id}', [OrderController::class, 'approve']);
-    Route::get('home/orders/cancel/{id}', [OrderController::class, 'cancel']);
+    Route::get('home/orders/reject/{id}', [OrderController::class, 'reject']);
 });
 
 
