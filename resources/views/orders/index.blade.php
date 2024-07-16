@@ -13,7 +13,7 @@
                 <th scope="col" class="px-6 py-3">Quantity Ordered</th>
                 <th scope="col" class="px-6 py-3">Date</th>
                 <th scope="col" class="px-6 py-3">Status</th>
-                <th scope="col" class="px-6 py-3">Actions</th>
+                {{-- <th scope="col" class="px-6 py-3">Actions</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -31,13 +31,13 @@
                     <td class="px-6 py-4">{{ $order->quantity }}</td>
                     <td class="px-6 py-4">{{ $order->order_date }}</td>
                     <td class="px-6 py-4">{{ $order->status }}</td>
-                    <td class="px-6 py-4">
+                    {{-- <td class="px-6 py-4">
                         <a href="/home/orders/delete/{{ $order->id }}" class="font-medium text-red-600 hover:underline">Cancel</a>
-                    </td>
+                    </td> --}}
                 </tr>
             @empty
                 <tr>
-                    <td class="px-6 py-4 text-center" colspan="7">No orders found.</td>
+                    <td class="px-6 py-4 text-center" colspan="6">No orders found.</td>
                 </tr>
             @endforelse
             

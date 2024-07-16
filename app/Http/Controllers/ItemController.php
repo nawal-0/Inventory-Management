@@ -32,7 +32,6 @@ class ItemController extends Controller
         $newItem['image'] = $filepath;
 
         $item = Item::create($newItem);
-        // return redirect('/home')->with('message', 'Item created successfully');
         return redirect('/home')->with('message', 'Item added successfully');
     }
 
@@ -57,7 +56,7 @@ class ItemController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return back()->withInput()->with('it', $item)->withErrors($validator, 'edit');
+            return redirect('/home')->withInput()->with('it', $item)->withErrors($validator, 'edit');
         }
 
         $item->name = $request->input('name');

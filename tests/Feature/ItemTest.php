@@ -14,13 +14,10 @@ class ItemTest extends TestCase
 {
     public function test_user_can_add_items() {
         $user = User::factory()->create();
-        $item = Item::factory()->make();
-
-        $image = UploadedFile::fake()->image('item.jpg');
-        $item['image'] = $image;
+        $item = Item::factory()->make(['image' => UploadedFile::fake()->image('item.jpg')]);
         
         $response = $this->actingAs($user)->post('/home/add', $item->toArray());
-        $item['image'] = "items/".$image->hashname();
+        $item['image'] = "items/".$item['image']->hashname();
 
         $response->assertRedirect('/home');
         $this->assertDatabaseHas('items', $item->toArray());
@@ -44,6 +41,28 @@ class ItemTest extends TestCase
         
         $response->assertRedirect('/home');
         $this->assertDatabaseHas('items', $updatedItem);
+    }
+
+    public function test_user_can_request_item() {
+        $user = User::factory()->create();
+        $item = Item::factory()->create();
+        
+        $response = $this->actingAs($user)->post("/home/order/{$item->id}", ['quantity' => 1]);
+        $response->assertRedirect('/home');
+        $this->assertDatabaseHas('orders', ['item_id' => $item->id, 'user_id' => $user->id, 'quantity' => 1]);
+    }
+
+    public function test_itemname_validation() {
+        $user = User::factory()->create();
+        $item = Item::factory()->make(['name' => 'one', 'image' => UploadedFile::fake()->image('item.jpg')]);
+        $itemduplicate = Item::factory()->make(['name' => 'one', 'image' => UploadedFile::fake()->image('item.jpg')]);
+
+        $this->actingAs($user)->post('/home/add', $item->toArray());
+        $this->actingAs($user)->post('/home/add', $itemduplicate->toArray())->assertSessionHasErrors('name', null, 'new');
+
+        $this->assertDatabaseMissing('items', $itemduplicate->toArray());
+       
+
     }
     
 
