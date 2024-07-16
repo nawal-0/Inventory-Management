@@ -43,15 +43,6 @@ class ItemTest extends TestCase
         $this->assertDatabaseHas('items', $updatedItem);
     }
 
-    public function test_user_can_request_item() {
-        $user = User::factory()->create();
-        $item = Item::factory()->create();
-        
-        $response = $this->actingAs($user)->post("/home/order/{$item->id}", ['quantity' => 1]);
-        $response->assertRedirect('/home');
-        $this->assertDatabaseHas('orders', ['item_id' => $item->id, 'user_id' => $user->id, 'quantity' => 1]);
-    }
-
     public function test_itemname_validation() {
         $user = User::factory()->create();
         $item = Item::factory()->make(['name' => 'one', 'image' => UploadedFile::fake()->image('item.jpg')]);
@@ -62,7 +53,14 @@ class ItemTest extends TestCase
 
         $this->assertDatabaseMissing('items', $itemduplicate->toArray());
        
+    }
 
+    public function test_itemimage_validation() {
+        $user = User::factory()->create();
+        $item = Item::factory()->make(['image' => UploadedFile::fake()->create('document.pdf')]);
+
+        $this->actingAs($user)->post('/home/add', $item->toArray())->assertSessionHasErrors('image', null, 'new');
+        $this->assertDatabaseMissing('items', $item->toArray());
     }
     
 

@@ -25,9 +25,12 @@ Route::middleware('auth')->group(function () {
     Route::post('home/order/{id}', [OrderController::class, 'store']);
     Route::get('home/orders', [OrderController::class, 'index']);
     Route::get('home/orders/delete/{id}', [OrderController::class, 'delete']);
+});
+
+Route::middleware('auth', 'can:approve-item')->group(function () {
     Route::get('home/orders/approve', [OrderController::class, 'approveview']);
     Route::get('home/orders/approve/{id}', [OrderController::class, 'approve']);
-    Route::get('home/orders/reject/{id}', [OrderController::class, 'reject']);
+    Route::get('home/orders/cancel/{id}', [OrderController::class, 'cancel']);
 });
 
 
