@@ -43,6 +43,16 @@ class OrderTest extends TestCase
         $response->assertStatus(403);
     }
 
+    public function test_user_cannot_reject_order() {
+        $user = User::factory()->create();
+        $user->assignRole('User');
+        $item = Item::factory()->create();
+        $order = $user->orders()->create(['item_id' => $item->id, 'quantity' => 15, 'status' => 'pending', 'order_date' => now()]);
+
+        $response = $this->actingAs($user)->get("/home/orders/reject/{$order->id}");
+        $response->assertStatus(403);
+    }
+
     public function test_admin_can_approve_order() {
         $user = User::factory()->create();
         $user->assignRole('Admin');
@@ -51,6 +61,16 @@ class OrderTest extends TestCase
 
         $response = $this->actingAs($user)->get("/home/orders/approve/{$order->id}");
         $this->assertDatabaseHas('orders', ['id' => $order->id, 'status' => 'approved']);
+    }
+
+    public function test_admin_can_reject_order() {
+        $user = User::factory()->create();
+        $user->assignRole('Admin');
+        $item = Item::factory()->create();
+        $order = $user->orders()->create(['item_id' => $item->id, 'quantity' => 15, 'status' => 'pending', 'order_date' => now()]);
+
+        $response = $this->actingAs($user)->get("/home/orders/reject/{$order->id}");
+        $this->assertDatabaseHas('orders', ['id' => $order->id, 'status' => 'rejected']);
     }
 
 
