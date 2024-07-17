@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Item;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Notifications\OrderStatus;
 
 class OrderController extends Controller
 {
@@ -60,6 +61,8 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order['status'] = 'approved';
         $order->save();
+
+        $order->user->notify(new OrderStatus($order));
         return back()->with('message', 'Order approved');
     }
 
@@ -67,6 +70,8 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order['status'] = 'rejected';
         $order->save();
+
+        $order->user->notify(new OrderStatus($order));
         return back()->with('message', 'Order rejected');
     }
 
