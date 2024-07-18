@@ -75,4 +75,10 @@ class OrderController extends Controller
         return back()->with('message', 'Order rejected');
     }
 
+    public function readnotif($id) {
+        $notification = auth()->user()->notifications()->where('id', $id)->first();
+        $notification->markAsRead();
+        return redirect('/home/orders');
+    }
+
 }
