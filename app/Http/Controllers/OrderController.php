@@ -81,4 +81,9 @@ class OrderController extends Controller
         return redirect('/home/orders');
     }
 
+    public function readallnotif() {
+        auth()->user()->unreadNotifications->markAsRead();
+        return back();
+    }
+
 }

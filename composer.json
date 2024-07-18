@@ -8,6 +8,7 @@
         "php": "^8.2",
         "kyslik/column-sortable": "^6.6",
         "laravel/framework": "^11.9",
+        "laravel/reverb": "@beta",
         "laravel/tinker": "^2.9",
         "s-damian/larasort": "^1.0",
         "spatie/laravel-permission": "^6.9"

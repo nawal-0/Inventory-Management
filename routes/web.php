@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('home/orders/delete/{id}', [OrderController::class, 'delete']);
 
     Route::get('home/orders/readnotif/{id}', [OrderController::class, 'readnotif']);
+    Route::get('home/orders/readallnotif', [OrderController::class, 'readallnotif']);
 });
 
 Route::middleware('auth', 'can:approve-item')->group(function () {
