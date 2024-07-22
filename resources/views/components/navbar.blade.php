@@ -54,21 +54,21 @@
 </header>
 
 {{-- Notification Dropdown --}}
-<div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 border border-slate-300 rounded-lg shadow w-50">
-    <div class="flex mt-2 justify-around">
+<div id="dropdown" class="z-10 hidden h-48 bg-white overflow-y-auto divide-y divide-gray-400 border border-slate-300 rounded-lg shadow w-50">
+    <div class="flex mt-2 mb-1 justify-around">
         <h3 class="text-sm font-medium">Notifications</h3>
-        <a href="/home/orders/readallnotif" class="text-[10px] p-1 mb-1 bg-primary hover:bg-primary-dark rounded-lg text-white">Read All</a>
+        {{-- <a href="/home/orders/readallnotif" class="text-[10px] p-1 bg-primary hover:bg-primary-dark rounded-lg text-white">Read All</a> --}}
     </div>
 
-    <ul class="py-2 text-sm text-gray-700 divide-y divide-gray-300">
+    <ul class="text-sm text-gray-700 divide-y divide-gray-300">
       @forelse(auth()->user()->unreadNotifications as $notification)
-        <li class="px-4 py-2 hover:bg-gray-100">
+        <li class="px-4 py-2 hover:bg-gray-200">
           <a href="/home/orders/readnotif/{{$notification->id}}" class="flex items-center">
             <span class="mr-2">{{ $notification->data['data'] }}</span>
           </a>
         </li>
         @empty
-        <li class="px-4 py-2 hover:bg-gray-100">
+        <li class="px-4 py-2 hover:bg-gray-200">
             <span class="mr-2">No new notifications</span>
         </li>
       @endforelse
