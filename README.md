@@ -1,6 +1,7 @@
 # Inventory Management System
 
-A web-based Inventory Management System built with Laravel that allows users to manage and track items, place orders, and handle user roles with permissions.
+A web-based Inventory Management System built with Laravel that allows users to manage and track items, place orders, and handle user roles with permissions.  
+Access the site [here](http://134.199.174.139).
 
 ---
 
