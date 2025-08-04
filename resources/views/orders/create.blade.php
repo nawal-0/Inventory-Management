@@ -1,7 +1,22 @@
 @extends('layout')
 @section('content')
 
-<x-navbar />
+{{-- <x-navbar /> --}}
+
+<header>
+    <nav class="bg-primary px-4 py-2.5">
+        <div class="flex justify-between items-center mx-auto max-w-screen-xl">
+            <div class="justify-between items-center w-full lg:flex lg:w-auto lg:order-1">
+                <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+                    <li>
+                        <a href="/home" class="block py-2 px-3 text-gray-100 hover:text-white rounded-lg py-2 pr-4 pl-3 hover:bg-primary-dark"><- Back</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+    </nav>
+</header>
 
 <div class="flex place-content-center">
 <div class="relative overflow-x-auto border border-slate-200 shadow-lg w-3/4 sm:rounded-lg m-4">
