@@ -51,7 +51,7 @@ class ItemController extends Controller
             'name' => ['required', Rule::unique('items')->ignore($item->id)],
             'category' => 'required',
             'description' => 'required',
-            'image' => ['required', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'image' => ['mimes:jpeg,png,jpg', 'max:2048'],
             'quantity' => 'required|numeric',
         ]);
 
@@ -64,7 +64,12 @@ class ItemController extends Controller
         $item->description = $request->input('description');
         $item->quantity = $request->input('quantity');
 
-        $currentImage = $item->image;
+ 
+        // if no new image is uploaded, keep the current image
+        if (!$request->hasFile('image')) {
+            $item->save();
+            return redirect('/home')->with('message', 'Item updated successfully');
+        }
         $newImagePath = $request->file('image')->store('items', 'public');
 
         // delete the old image

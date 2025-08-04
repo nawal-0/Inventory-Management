@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="col-span-2">
-                        <label for="image" class="block mb-2 text-sm font-medium text-gray-900">Upload Item Image</label>
+                        <label for="image" class="block mb-2 text-sm font-medium text-gray-900"> {{ $id && $id->image ? 'Current Image (Upload a new one to replace)' : 'Upload Item Image' }}</label>
                         <input  type="file" name="image" id={{ $fileId }} class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300">
                         @if ($id)
                             <img id="preview1" class="block w-1/4 mt-5 border border-gray-300" src="{{asset('storage/' . $id->image)}}" alt="Preview" />
