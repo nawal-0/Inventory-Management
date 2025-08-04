@@ -5,7 +5,6 @@ A web-based Inventory Management System built with Laravel that allows users to 
 ---
 
 ## Features
-
 - **User Authentication**
   - Sign up and log in securely
   - Role-based access control (Admin vs. Regular User)
@@ -23,7 +22,7 @@ A web-based Inventory Management System built with Laravel that allows users to 
   - **Admin**: Full access to manage items, view all orders, and approving orders
   - **User**: Limited to viewing, editing and ordering items
 
----
+
 
 ## Tech Stack
 
@@ -31,4 +30,3 @@ A web-based Inventory Management System built with Laravel that allows users to 
 - **Frontend**: Blade + Tailwind CSS
 - **Database**: MySQL
 
----
