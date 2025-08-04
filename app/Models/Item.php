@@ -37,7 +37,7 @@ class Item extends Model
 
     public static function getCategories()
     {
-        return ['Category1', 'Category2', 'Category3', 'Category4', 'Category5'];
+        return ['Furniture', 'Electronics', 'Stationery', 'Lighting', 'Miscellaneous'];
     }
 
     public function scopeFilter($query, array $filters)
