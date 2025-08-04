@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    #image: digitalocean.com/php
+    image: digitalocean.com/php
     #image: php:8.1-fpm
     container_name: app
     restart: unless-stopped
@@ -17,6 +17,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - app-network
 
