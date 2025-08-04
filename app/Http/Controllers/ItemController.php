@@ -21,7 +21,7 @@ class ItemController extends Controller
         // dd($request->all());
         $newItem = $request->validateWithBag('new', [
             'name' => ['required', Rule::unique('items')],
-            'category' => 'required',
+            'category' => ['required', Rule::in(Item::getCategories())],
             'description' => 'required',
             'image' => ['required', 'mimes:jpeg,png,jpg', 'max:2048'],
             'quantity' => 'required|numeric',
@@ -49,7 +49,7 @@ class ItemController extends Controller
         
         $validator = Validator::make($request->all(), [
             'name' => ['required', Rule::unique('items')->ignore($item->id)],
-            'category' => 'required',
+            'category' => ['required' , Rule::in(Item::getCategories())],
             'description' => 'required',
             'image' => ['mimes:jpeg,png,jpg', 'max:2048'],
             'quantity' => 'required|numeric',
